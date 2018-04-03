@@ -7,9 +7,6 @@ capybara = Capybara::Session.new(:selenium_chrome_headless)
 
 capybara.visit("https://morph.io/")
 
-# # Open the hamburger menu
-capybara.click_button "Toggle navigation"
-
 # Search for "planningalerts"
 capybara.fill_in :q, with: "planningalerts"
 capybara.click_button "Submit"
