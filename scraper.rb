@@ -17,11 +17,7 @@ capybara = Capybara::Session.new(:logging_selenium_chrome_headless)
 capybara.visit("https://morph.io/")
 
 # show the javascript console
-js_console_log = capybara.driver.browser.manage.logs.get(:browser)
-messages = []
-js_console_log.each do |item|
-  p item.message
-end
+p capybara.driver.browser.manage.logs.get(:browser)
 
 # # Open the hamburger menu
 capybara.click_button "Toggle navigation"
