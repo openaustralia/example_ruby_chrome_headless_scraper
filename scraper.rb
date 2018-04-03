@@ -14,7 +14,7 @@ end
 # Open a Capybara session with the Selenium web driver for Chromium headless
 capybara = Capybara::Session.new(:logging_selenium_chrome_headless)
 
-capybara.visit("https://morph.io/")
+p capybara.visit("https://morph.io/")
 
 # show the javascript console
 p capybara.driver.browser.manage.logs.get(:browser)
