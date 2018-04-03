@@ -11,7 +11,7 @@ Capybara.register_driver :logging_selenium_chrome_headless do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options, desired_capabilities: caps)
 end
 
-system("google-chrome --headless --disable-gpu")
+system("google-chrome --headless --disable-gpu https://morph.io")
 
 # Open a Capybara session with the Selenium web driver for Chromium headless
 capybara = Capybara::Session.new(:logging_selenium_chrome_headless)
