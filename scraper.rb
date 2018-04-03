@@ -2,26 +2,12 @@
 require "capybara"
 require "selenium-webdriver"
 
-# Add logging of javascript
-Capybara.register_driver :logging_selenium_chrome_headless do |app|
-  caps = Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs:{browser: 'ALL'})
-  browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  browser_options.args << '--headless'
-  browser_options.args << '--disable-gpu'
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options, desired_capabilities: caps)
-end
-
-system("google-chrome --headless --disable-gpu https://morph.io")
-
 # Open a Capybara session with the Selenium web driver for Chromium headless
-capybara = Capybara::Session.new(:logging_selenium_chrome_headless)
+capybara = Capybara::Session.new(:selenium_chrome_headless)
 
-p capybara.visit("https://morph.io/")
+capybara.visit("https://morph.io/")
 
-# show the javascript console
-p capybara.driver.browser.manage.logs.get(:browser)
-
-# # Open the hamburger menu
+# Open the hamburger menu
 capybara.click_button "Toggle navigation"
 
 # Search for "planningalerts"
